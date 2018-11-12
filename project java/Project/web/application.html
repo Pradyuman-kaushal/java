@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style> 
+input[type=text] {
+    width: 100%;
+}
+</style>
+    </head>
+    <body bgcolor="silver">
+        <form action="submit.jsp" method="post">
+            <h1 align="center">Application  form</h1>
+            To:<input type="text" name="to">
+            Subject:<input type="text" name="subject">
+            Department:<select name="dept">
+    <option value="tranport">Transport</option>
+    <option value="accounts">Accounts</option>
+    <option value="placement cell">Placement Cell</option>
+    <option value="H.O.D">Head of Department</option>
+    <option value="Library">Library</option>
+    <option value="hostel">Hostel</option>
+  </select><br>
+            Application:<br>
+            <textarea rows="10" cols="175" name="comment" >
+Enter text here...</textarea>
+            <br>Urgent:<input type="checkbox" name="urgent" value="checked">
+            <br>Id:<input type="text" name="id">
+            <br><input type="submit">
+        </form>
+    </body>
+</html>
