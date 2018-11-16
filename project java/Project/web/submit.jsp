@@ -14,6 +14,7 @@
     </head>
     <body>
         <%
+           
             try{
                 String admin = request.getParameter("to");
                 String subject = request.getParameter("subject");
@@ -24,7 +25,7 @@
             String myurl="jdbc:mysql://localhost/project";
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection conn=DriverManager.getConnection(myurl,"root","");
-                String query1="insert into app values(?,?,?,?,?,?)";
+                String query1="insert into app(admin,subject,dept,application,urgent,id)values(?,?,?,?,?,?)";
                 
                 PreparedStatement prst=conn.prepareStatement(query1);
                  prst.setString(1,admin);
@@ -33,10 +34,10 @@
                  prst.setString(4,app);
                  prst.setString(5, urgent);
                  prst.setString(6, id);
-                 int count=prst.executeUpdate();
+                 int i=prst.executeUpdate();
                 
                 
-            if(count!=-1){
+            if(i!=-1){
             //out.println("");
             out.println("submitted successfully");
             
@@ -58,6 +59,7 @@
                 System.err.println("got an exception");
                 System.err.println(e.getMessage());
             }
+
    
         %>
     </body>

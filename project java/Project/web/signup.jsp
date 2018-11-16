@@ -44,7 +44,7 @@
 
             catch(Exception e)
             {
-                out.println("<script>alert('User already exists');setTimeout(function(){window.location='student.jsp'},1*1000);</script>");
+                out.println("<script>alert('User already exists');setTimeout(function(){window.location='signup.html'},1*1000);</script>");
             }
    
         %>

@@ -41,11 +41,9 @@
             }
             else 
             {
-                 out.println("not found");
-                %>
-                <jsp:forward page="student.jsp"/>
+                 
+                 out.println("<script>alert('not found');setTimeout(function(){window.location='student.jsp'},1*1000);</script>");
                 
-            <%
                  st.close();
             
             }

@@ -7,12 +7,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <head>
+        <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+    </head>
 <body>
 <%
             
             try{
-            String user = request.getParameter("uname");
-            String pass = request.getParameter("psw");
+            String user = request.getParameter("user");
+            String pass = request.getParameter("pass");
             
             String myurl="jdbc:mysql://localhost/project";
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,19 +42,24 @@
                 
             if(rs.next())
             {    
-            //session.setAttribute("user", user);
+            
             //response.sendRedirect("success.jsp");
             String name=rs.getString("user");
+            session.setAttribute("username", user);
             %>
             <h1>Welcome <% out.print(name);%> Department</h1>
-            <br><br>
-            <a href="faculty_login.html"> logout</a>
-                <%
-            }
-            else 
+            <% }
+else 
             {
                 out.println("<script>alert('not found');setTimeout(function(){window.location='faculty_login.html'},1*1000);</script>");
             }
+            %><a href="list_app.jsp">Application list</a>
+            
+            <br><br>
+            <a href="faculty_login.html"> logout</a>
+                
+           <% 
+            
    
                  st.close();
             
