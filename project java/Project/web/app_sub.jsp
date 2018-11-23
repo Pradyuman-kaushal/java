@@ -18,13 +18,20 @@
             String permit = request.getParameter("permit");
             String sub=(String)session.getAttribute("sub");
             String id=(String)session.getAttribute("id");
-            
+            String pos=(String)session.getAttribute("pos");
             String myurl="jdbc:mysql://localhost/project";
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection conn=DriverManager.getConnection(myurl,"root","");
                 Statement st=conn.createStatement();
                 String query1="update app set permit='"+permit+"' where subject='"+sub+"' and id='"+id+"'";
-                
+                if(pos.equals("low")&&permit.equals("Approve"))
+                query1="update app set permit='aApprove' where subject='"+sub+"' and id='"+id+"'";
+                else if(pos.equals("mid")&&permit.equals("Approve"))
+                query1="update app set permit='bApprove' where subject='"+sub+"' and id='"+id+"'";
+                else if(pos.equals("high")&&permit.equals("Approve"))
+                query1="update app set permit='cApprove' where subject='"+sub+"' and id='"+id+"'";
+                else
+                    query1="update app set permit='"+permit+"' where subject='"+sub+"' and id='"+id+"'";
                 PreparedStatement prst=conn.prepareStatement(query1);
                 int i=prst.executeUpdate();
                 if(i==1)

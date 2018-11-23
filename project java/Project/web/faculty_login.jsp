@@ -53,9 +53,20 @@ else
             {
                 out.println("<script>alert('not found');setTimeout(function(){window.location='faculty_login.html'},1*1000);</script>");
             }
-            %><a href="list_app.jsp">Application list</a>
+            %>
+            <h2>Please enter your position</h2>
+            <form action="facl_pref.jsp">
+            <select name="pref">
+                <option value="low">Low</option>
+  <option value="mid">Mid</option>
+  <option value="high">High</option>
+  </select>
+                <br><br>
+                <input type="submit">
             
+            </form>
             <br><br>
+            
             <a href="faculty_login.html"> logout</a>
                 
            <% 

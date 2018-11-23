@@ -48,6 +48,9 @@ display: inline-block;
     </head>
     <body>
         <h1 align="center">Applications Submitted</h1>
+        <a href="faculty_login.jsp">Home</a>
+        <a href="faculty_login.html">logout</a>
+        
                 <%
                     try{
             String user = (String)session.getAttribute("username");
@@ -59,13 +62,29 @@ display: inline-block;
                 Statement st=conn.createStatement();
                 String query1="select * from app where dept='"+user+"'";
                 ResultSet rs=st.executeQuery(query1);
-                
+                String pos=(String)session.getAttribute("pos");
+                if(pos.equals("high"))
+                query1="select * from app where dept='"+user+"' and permit='bApprove'";
+                else if(pos.equals("mid"))
+                query1="select * from app where dept='"+user+"' and permit='aApprove'";
+                else
                 query1="select * from app where dept='"+user+"' and permit is NULL";
+                    
                 rs=st.executeQuery(query1);
                 
 
     
-    %><table>
+    %>
+    <script>
+function myFunction(o,int j) {
+ 
+      session.setAttribute("permit",o.value);
+      session.setAttribute("id",ida[j]);
+session.setAttribute("sub",sub[j]);
+ 
+}
+</script>
+<table>
     <tr>
          <td><b>ID</b></td>
          <td><b>Subject</b></td>
@@ -73,22 +92,37 @@ display: inline-block;
          <td><b>Permission</b></td>
          <td><b></b></td>
     </tr>
-     <%           while(rs.next())
+     <%  String ida[]=new String[100];
+         String sub[]=new String[100];
+         String app[]=new String[100];
+         String per[]=new String[100];
+         String subm[]=new String[100];
+         int i=0;
+         while(rs.next())
                 {
+                    ida[i]=rs.getString("id");
+                    sub[i]=rs.getString("subject");
+                    app[i]=rs.getString("application");
+                    per[i]=null;
+                    subm[i]="submit";
+                    i++;
+                }
+         for(int j=0;j<i;j++)
+         {
                     %>
 
 <tr>
-    <td><%String ida=rs.getString("id");
-            out.print(ida);
-             session.setAttribute("id",ida);   %></td>
-    <td><%String sub=rs.getString("subject");
-    out.print(sub);
-    session.setAttribute("sub",sub);%></td>
-    <td><%=rs.getString("application") %></td>
-    <td><form action="app_sub.jsp">Approve: <input type="radio" name="permit" value="Approve"> Decline: <input type="radio" name="permit" value="Declined"></td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="button" value="Submit"></form></td>
+    <td><%
+            out.print(ida[j]);
+                %></td>
+    <td><%//String sub=rs.getString("subject");
+    out.print(sub[j]);
+    %></td>
+    <td><%//=rs.getString("application") 
+        out.print(app[j]);%></td>
+    <td><form action="app_sub.jsp" name="app_sub">Approve: <input type="radio" name="permit" value="Approve"> Decline: <input type="radio" name="permit" value="Declined"></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" onClick =<%session.setAttribute("id",ida[0]); session.setAttribute("sub",sub[0]);%>  ></form></td>
 </tr>
-
                <% 
                     }
 %>

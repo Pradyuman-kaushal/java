@@ -30,11 +30,13 @@
             {    
             //session.setAttribute("user", user);
             //response.sendRedirect("success.jsp");
+            String id=rs.getString("id");
             String name=rs.getString("name");
+            session.setAttribute("s_id",id);
             %>
             <h1>Welcome <% out.print(name);%></h1>
             <a href="application.html"> submit application</a>
-            <a href="status.html"> application status</a>
+            <a href="app_status.jsp"> application status</a>
             <br><br>
             <a href="student.jsp"> logout</a>
                 <%
