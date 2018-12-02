@@ -46,28 +46,18 @@ tr:nth-child(even) {
             //response.sendRedirect("success.jsp");
             String name=rs.getString("user");
             session.setAttribute("username", user);
-            %>
-            <h1>Welcome <% out.print(name);%> Department</h1>
-            <% }
+            session.setAttribute("name", name);
+            
+                out.println("<script>setTimeout(function(){window.location='fac_login.jsp'},1*1000);</script>");
+            }
 else 
             {
                 out.println("<script>alert('not found');setTimeout(function(){window.location='faculty_login.html'},1*1000);</script>");
             }
             %>
-            <h2>Please enter your position</h2>
-            <form action="facl_pref.jsp">
-            <select name="pref">
-                <option value="low">Low</option>
-  <option value="mid">Mid</option>
-  <option value="high">High</option>
-  </select>
-                <br><br>
-                <input type="submit">
-            
-            </form>
             <br><br>
             
-            <a href="faculty_login.html"> logout</a>
+           
                 
            <% 
             

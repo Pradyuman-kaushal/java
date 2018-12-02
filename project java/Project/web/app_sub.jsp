@@ -26,10 +26,16 @@
                 String query1="update app set permit='"+permit+"' where subject='"+sub+"' and id='"+id+"'";
                 if(pos.equals("low")&&permit.equals("Approve"))
                 query1="update app set permit='aApprove' where subject='"+sub+"' and id='"+id+"'";
+                else if(pos.equals("low")&&permit.equals("Declined"))
+                query1="update app set permit='Declined1' where subject='"+sub+"' and id='"+id+"'";
                 else if(pos.equals("mid")&&permit.equals("Approve"))
                 query1="update app set permit='bApprove' where subject='"+sub+"' and id='"+id+"'";
+                else if(pos.equals("mid")&&permit.equals("Declined"))
+                query1="update app set permit='Declined2' where subject='"+sub+"' and id='"+id+"'";
                 else if(pos.equals("high")&&permit.equals("Approve"))
                 query1="update app set permit='cApprove' where subject='"+sub+"' and id='"+id+"'";
+                else if(pos.equals("high")&&permit.equals("Declined"))
+                query1="update app set permit='Declined3' where subject='"+sub+"' and id='"+id+"'";
                 else
                     query1="update app set permit='"+permit+"' where subject='"+sub+"' and id='"+id+"'";
                 PreparedStatement prst=conn.prepareStatement(query1);

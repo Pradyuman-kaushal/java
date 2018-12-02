@@ -1,11 +1,9 @@
-<%-- 
-    Document   : facl_pref
-    Created on : 20 Nov, 2018, 3:41:32 PM
-    Author     : pradu
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -215,13 +213,6 @@ box-shadow: 5px 10px 20px black;
 a,a:hover{
     color:white;
 }
-select{
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
 </style>
 
     </head>
@@ -239,21 +230,27 @@ select{
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="fac_login.jsp">HOME</a></li>
+        <li><a href="std_login.jsp">HOME</a></li>
         
-        <li><a href="faculty_login.html">LOG OUT</a></li>
+        <li><a href="student.jsp">LOG OUT</a></li>
         
              </ul>
     </div>
   </div>
 </nav>
+        <br><br><br>
         <%
-            
-                String pos=request.getParameter("pref");
-                session.setAttribute("pos",pos);
-                %><br><br><br><br><p align="center"><button class="button"><span><a href="list_app.jsp">Application list</a></span></button>
-                 <%       
-            
+            String name=(String)session.getAttribute("name");
             %>
+            <div id="p">
+        <p align="center" style="color:black;font-family: algerian; font-size:70px">Welcome <% out.print(name);%></p>
+        <hr>
+        <p align="center" style="color:black;font-family: Times New Roman; font-size:40px">
+            What action would you like to perform:<br>
+            <a href="application.html"><button class="button" style="vertical-align:middle"><span> Submit Application</span></a></button>
+            <a href="app_status.jsp"><button class="button" style="vertical-align:middle"><span> Application Status</span></a></button>
+            <br><br>
+            
+       </div>         
     </body>
 </html>

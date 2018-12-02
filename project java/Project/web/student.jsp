@@ -1,135 +1,132 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
+    body{
+        background-image:url("sbp3.jpg");
+        -webkit-background-size: cover;
+        background-size:cover;
+        background-position:center center; 
     }
-    .cancelbtn {
-       width: 100%;
+    .form-area{
+        width: 500px;
+        height: 450px;
+        margin: 60px auto 0;
+        position: relative;
+        background: rgba(0,0,0,0.4);
+        text-align: center;
+        padding: 35px;
+        border: 3px solid #fff;
+        -webkit-border-radius: 70px 0 70px 0;
+        -moz-border-radius: 70px 0 70px 0;
+        border-radius: 70px 0 70px 0;
     }
-}
-
-body {
-    font-family: Arial;
-    color: white;
-}
-
-.split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.left {
-    left: 0;
-    background-color: #111;
-}
-
-.right {
-    right: 0;
-    background-color: red;
-}
-
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.centered img {
-    width: 150px;
-    border-radius: 50%;
-}
-</style>
-</head>
-<body bgcolor="black">
-
-  <div class="centered">
-      <h1>Login</h1>
-    <form action="login.jsp" method="post">
-        <div class="imgcontainer">
-    <img src="avatar-1577909__340.png" alt="Avatar" class="avatar">
-  </div>
-
-        <div class="container">
-    <label for="user"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="user" required>
-
-    <label for="pass"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pass" required>
+    .form-area h2{
+        margin-bottom: 45px;
+        color: #fff;
+    }
+    .img-area{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: tomato;
+        position: absolute;
+        top:-5%;
+        left: 45%;
+    }
+    .img-area img{
+        width:100%;
+        padding:0px;
+    }
+    input[type=text], input[type=password]{
+        width:100%;
+        height: 50px;
+        border-radius: 15px 0 15px 0;
+        border: 2px solid #fff;
+        margin-bottom:15px;
+        background-color: transparent;
+        color: #fff;
         
-    <button type="submit">Login</button>
-    </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-  <span class="psw"> <a href="signup.html">Sign up</a></span>
-  </div>
-  </form>
-  </div>
-</div>
-
+    }
+    .form-area p{
+        text-align: left;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .btn{
+        display: inline-block;
+        height:40px;
+        width:150px;
+        line-height: 40px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        background: tomato;
+        border-radius:25px;
+        color: #fff;
+        text-transform: uppercase;
+        margin-top:10px;
+        cursor: pointer;
+        text-decoration: none;
+        
+    }
+    .btn-text{
+        display: block;
+        height: 100%;
+        position: relative;
+        top: 0;
+        -webkit-transition: top 0.6s;
+        -moz-transition: top 0.6s;
+        -ms-transition: top 0.6s;
+        -o-transition: top 0.6s;
+        transition: top 0.6s;
+        width: 100%;
+        color: red;
+    }
+    .btn:hover .btn-text{
+        top:-100%;
+    }
+    .for-pass{
+        text-decoration: none;
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 20px;
+        color:#fff;
+        
+    }
+          
+    </style>
      
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<div class="form-area">
+    <div class="img-area">
+        <img src="icon-avatar-18.jpg" alt="avatar">
+    </div>
+    <h2>Login Form:</h2>
+    <form action="login.jsp" method="post">
+    <p>USERNAME:</p>
+    <input type="text"placeholder="Enter Username" name="user" required>
+    <p>Password:</p>
+    <input type="password" placeholder="Enter Password" name="pass" required>
+    <a href="#" class="btn">
+        <input type="submit" value="Sign In" class="btn-text">
+        <input type="submit" value="Log In" class="btn-text">
+        </a><br>
+   <input type="submit" value="Forgot Password" formaction="forgot_pss.jsp"class="btn">
+    <a href="signup.html" class="for-pass">Sign up</a>
+    <a href="index.html" class="for-pass">Home</a>
+    
+        
+    </div>
+     </form>
 </body>
 </html> 

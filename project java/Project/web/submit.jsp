@@ -38,11 +38,8 @@
                 
                 
             if(i!=-1){
-            //out.println("");
-            out.println("submitted successfully");
-            
-           // response.sendRedirect("student.html");
-                    }
+            out.println("<script>alert('Successfully Submitted');setTimeout(function(){window.location='std_login.jsp'},1*1000);</script>");
+            }
             else 
             {
                  

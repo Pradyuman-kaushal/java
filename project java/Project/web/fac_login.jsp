@@ -1,11 +1,9 @@
-<%-- 
-    Document   : facl_pref
-    Created on : 20 Nov, 2018, 3:41:32 PM
-    Author     : pradu
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -247,13 +245,29 @@ select{
     </div>
   </div>
 </nav>
+        <br><br><br>
         <%
-            
-                String pos=request.getParameter("pref");
-                session.setAttribute("pos",pos);
-                %><br><br><br><br><p align="center"><button class="button"><span><a href="list_app.jsp">Application list</a></span></button>
-                 <%       
-            
+          String name=(String)session.getAttribute("name");
             %>
+            <div id="p">
+        <p align="center" style="color:black;font-family: algerian; font-size:70px">Welcome to <% out.print(name);%> Department</p>
+        <hr>
+        <p align="center" style="color:black;font-family: Times New Roman; font-size:40px">
+           
+           <br>
+            <form action="facl_pref.jsp" align="center">
+           <h2 align="center">Please Enter Your Position:</h2>
+                <select name="pref">
+                <option value="low">Faculty</option>
+  <option value="mid">Co ordinator</option>
+  <option value="high">Head</option>
+  </select>
+                <br><br>
+                <span><input type="submit" class="button"></span>
+            
+            </form>
+            
+            
+       </div>         
     </body>
 </html>

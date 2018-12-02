@@ -17,6 +17,7 @@
             
             try{
             String user = request.getParameter("user");
+            
             String pass = request.getParameter("pass");
             
             String myurl="jdbc:mysql://localhost/project";
@@ -33,13 +34,8 @@
             String id=rs.getString("id");
             String name=rs.getString("name");
             session.setAttribute("s_id",id);
-            %>
-            <h1>Welcome <% out.print(name);%></h1>
-            <a href="application.html"> submit application</a>
-            <a href="app_status.jsp"> application status</a>
-            <br><br>
-            <a href="student.jsp"> logout</a>
-                <%
+            session.setAttribute("name",name);
+            out.println("<script>setTimeout(function(){window.location='std_login.jsp'},1*1000);</script>");
             }
             else 
             {

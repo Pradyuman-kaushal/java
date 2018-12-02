@@ -1,23 +1,61 @@
 <%-- 
-    Document   : facl_pref
-    Created on : 20 Nov, 2018, 3:41:32 PM
+    Document   : app_status
+    Created on : 16 Nov, 2018, 10:27:54 AM
     Author     : pradu
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>JSP Page</title>
         <style>
-           body {
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: black;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.button {border-radius: 50%;
+display: inline-block;
+  padding: 15px 25px;
+  font-size: 17px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  
+  box-shadow: 0 9px #999;}
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+ body {
         background-image:url("back pattern 1.png");
         background-attachment:fixed;
         
@@ -173,47 +211,9 @@ border-radius: 25px;
 box-shadow: 5px 10px 20px black;
 
 }
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #555;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
 
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
 a,a:hover{
-    color:white;
+    color:black;
 }
 select{
     width: 50%;
@@ -222,8 +222,8 @@ select{
     border-radius: 4px;
     resize: vertical;
 }
-</style>
 
+</style>
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
         
@@ -239,21 +239,77 @@ select{
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="fac_login.jsp">HOME</a></li>
+        <li><a href="std_login.jsp">HOME</a></li>
         
-        <li><a href="faculty_login.html">LOG OUT</a></li>
+        <li><a href="student.html">LOG OUT</a></li>
         
              </ul>
     </div>
   </div>
-</nav>
-        <%
+</nav>    <br><br><br>
+        <div id="p">
+        
+                <%
+                    try{
+            String id = (String)session.getAttribute("s_id");
+        %><h1 align="center"style="color:black">Applications Submitted by <%out.print(id);%></h1><hr><br><%    
+            String myurl="jdbc:mysql://localhost/project";
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection conn=DriverManager.getConnection(myurl,"root","");
+                Statement st=conn.createStatement();
+                String query1="select * from app where id='"+id+"'";
+                ResultSet rs=st.executeQuery(query1);
+                
+                query1="select * from app where id='"+id+"'";
+                rs=st.executeQuery(query1);
+                
+    %><table>
+    <tr>
+         <td><b>ID</b></td>
+         <td><b>Subject</b></td>
+         <td><b>Data (Click on data to see status)</b></td>
+         
+         
+    </tr>
+     <%  int i=0;
+         String app[]=new String[100];
+         while(rs.next())
+                {
+                    %>
+
+<tr>
+    <td><%String ida=rs.getString("dept");
+            out.print(ida);
+             %></td>
+    <td><%String sub=rs.getString("subject");
+    out.print(sub);
+    %></td>
+    <td><%app[i]=rs.getString("application");
+            i++;
             
-                String pos=request.getParameter("pref");
-                session.setAttribute("pos",pos);
-                %><br><br><br><br><p align="center"><button class="button"><span><a href="list_app.jsp">Application list</a></span></button>
-                 <%       
-            
-            %>
+%><a href="status.jsp?applic=<%=app[i-1]%>"><%out.print(app[i-1]);%></a></td>
+    <!--<td><%/*String p=rs.getString("permit");
+    session.setAttribute("per",p);
+    out.print(p);
+    
+    
+    */%></td>-->
+           
+</tr>
+
+               <% 
+                    }
+%>
+</table>
+<%
+}
+
+        catch(Exception e)
+            {
+                System.err.println("got an exception");
+                System.err.println(e.getMessage());
+            }
+                    %>
+                    </div>
     </body>
 </html>

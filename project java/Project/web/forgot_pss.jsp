@@ -1,16 +1,16 @@
 <%-- 
-    Document   : facl_pref
-    Created on : 20 Nov, 2018, 3:41:32 PM
+    Document   : forgot_pss
+    Created on : 26 Nov, 2018, 8:02:27 PM
     Author     : pradu
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -171,57 +171,10 @@ border-radius: 25px;
     border: 2px solid black;
     padding: 20px; 
 box-shadow: 5px 10px 20px black;
+color:black;
 
 }
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #555;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
 
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-a,a:hover{
-    color:white;
-}
-select{
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
 </style>
 
     </head>
@@ -239,21 +192,81 @@ select{
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="fac_login.jsp">HOME</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="signup.html">SIGN UP</a></li>
+        <li><a href="student.jsp">LOG IN</a></li>
+        <li><a href="#contact">CONTACT</a></li>
         
-        <li><a href="faculty_login.html">LOG OUT</a></li>
-        
-             </ul>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+      </ul>
     </div>
   </div>
 </nav>
-        <%
+        <br><br><br>
+<div id="p">
+    <%
+    String user=request.getParameter("user");
+    session.setAttribute("user",user);
+     String myurl="jdbc:mysql://localhost/project";
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection conn=DriverManager.getConnection(myurl,"root","");
+                Statement st=conn.createStatement();
+                String query1="select * from student where user='"+user+"'";
+                ResultSet rs=st.executeQuery(query1);
+                
+            if(rs.next())
+            {    
+            //session.setAttribute("user", user);
+            //response.sendRedirect("success.jsp");
+            String q1=rs.getString("q1");
+            String a1=rs.getString("a1");
+            String q2=rs.getString("q2");
+            String a2=rs.getString("a2");
+            String dob=rs.getString("dob");
             
-                String pos=request.getParameter("pref");
-                session.setAttribute("pos",pos);
-                %><br><br><br><br><p align="center"><button class="button"><span><a href="list_app.jsp">Application list</a></span></button>
-                 <%       
-            
+            %><form action="fgt.jsp">
+               <p align="center" style="font-family: Times New Roman; font-size:20px">
+            <%
+                out.println(q1);
             %>
+        
+                <input type="text" name="ans1">
+                <br>
+                <p align="center" style="font-family: Times New Roman; font-size:20px">
+            <%
+                out.println(q2);
+            %>
+            
+                <input type="text" name="ans2">
+                <br>
+                <p align="center" style="font-family: Times New Roman; font-size:20px">
+                <%
+                out.println("Enter your D.O.B");
+            %>
+            
+                <input type="text" name="ans3">
+                <br>
+                <p align="center" style="font-family: Times New Roman; font-size:20px">
+            <%
+                out.println("Enter new Password");
+            %>
+                <input type="text" name="pass">
+                <br>
+                <input type="submit">
+                </form>
+            </p><%
+                
+            }
+            else 
+            {
+                 
+                 out.println("<script>alert('not found');setTimeout(function(){window.location='student.jsp'},1*1000);</script>");
+                
+                 st.close();
+            
+            }
+    %>
+            </div>
+
     </body>
 </html>

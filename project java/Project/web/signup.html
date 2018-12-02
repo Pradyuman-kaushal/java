@@ -1,154 +1,158 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-body {font-family: Times New Roman, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;
- 
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-}
-
-body {
-    font-family: Arial;
-    color: white;
-}
-
-.split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.left {
-    left: 0;
-    background-color: #111;
-}
-
-.right {
-    right: 0;
-    background-color: red;
-}
-
-.centered {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
-
-.centered img {
-    width: 150px;
-    border-radius: 50%;
-}
-</style>
+<html lang="en">
+<head>
+	<title>Sign Up</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
 </head>
-    <body bgcolor="black">
-          
-        <div class="centered">
-     <h1 align="center">Sign Up</h1>
-    <form action="signup.jsp" method="post">
-        
-        <div class="imgcontainer">
-            
-    <img src="avatar-1577909__340.png" alt="Avatar" class="avatar">
-  </div>
-        <div class="container">
-    <label for="id"><b>Id</b></label>
-    <input type="text" placeholder="Enter ID" name="id" required>
+<body style="background-color: #999999;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="login100-more" style="background-image: url('1471529698form-validation.jpg');"></div>
 
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter name" name="name" required>
-    
-    <label for="dob"><b>D.O.B</b></label>
-    <input type="text" placeholder="Enter D.O.B" name="dob" required>
-    
-    <label for="user"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="user" required>
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+				<form class="login100-form validate-form" action="signup.jsp">
+					<span class="login100-form-title p-b-59">
+						Sign Up
+					</span>
 
-    <label for="pass"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pass" required>
-    <button type="submit">SignUp</button>
-    </div>
+                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">ID</span>
+						<input class="input100" type="text" placeholder="ID..." name="id" required>
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<span class="label-input100">Full Name</span>
+						<input class="input100" type="text" name="name" placeholder="Name...">
+						<span class="focus-input100"></span>
+					</div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
+					<div class="wrap-input100 validate-input" data-validate = "Valid Date of Birth is required">
+						<span class="label-input100">D.O.B</span>
+						<input class="input100" type="text" name="dob" placeholder="Date Of Birth...">
+						<span class="focus-input100"></span>
+					</div>
 
-        </div>
-        </form>
-  </div>
+					<div class="wrap-input100 validate-input" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" name="user" placeholder="Username...">
+						<span class="focus-input100"></span>
+					</div>
 
- 
-    </body>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="password" name="pass" placeholder="*************">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
+						<span class="label-input100">Repeat Password</span>
+						<input class="input100" type="password" name="repeat-pass" placeholder="*************">
+						<span class="focus-input100"></span>
+					</div>
+                                    
+                                    <div class="wrap-input100 validate-input" data-validate = "Question is required">
+						<span class="label-input100">Questions:</span>
+						<select name="ques1">
+                                                <option value="Enter registration no of your first vehicle">Enter registration no of your first vehicle</option>
+                                                <option value="Enter nick name of your pet">Enter nick name of your pet</option>
+                                                </select>
+						<span class="focus-input100"></span>
+					</div>
+                                    <div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
+						<span class="label-input100">Answer:</span>
+						<input class="input100" type="text" name="a1" placeholder="Answer...">
+						<span class="focus-input100"></span>
+					</div>
+<div class="wrap-input100 validate-input" data-validate = "Question is required">
+						<span class="label-input100">Questions:</span>
+						<select name="ques2">
+                                                <option value="Enter nick name of your pet">Enter nick name of your pet</option>
+                                                    <option value="Enter registration no of your first vehicle">Enter registration no of your first vehicle</option>
+                                                
+                                                </select>
+						<span class="focus-input100"></span>
+					</div>
+                                    <div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
+						<span class="label-input100">Answer:</span>
+						<input class="input100" type="text" name="a2" placeholder="Answer...">
+						<span class="focus-input100"></span>
+					</div>
+					<div class="flex-m w-full p-b-33">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								<span class="txt1">
+									I agree to the
+									<a href="#" class="txt2 hov1">
+										Terms of User
+									</a>
+								</span>
+							</label>
+						</div>
+
+						
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">
+								Sign Up
+							</button>
+						</div>
+
+						<a href="student.jsp" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+							Sign in
+							<i class="fa fa-long-arrow-right m-l-5"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
 </html>
